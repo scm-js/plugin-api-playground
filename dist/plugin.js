@@ -3,17 +3,21 @@
 // ko.ts
 var KO = {
   "1 type error; running anyway: {message}": "\uD0C0\uC785 \uC624\uB958 1\uAC1C\uAC00 \uC788\uC9C0\uB9CC \uC2E4\uD589\uD569\uB2C8\uB2E4: {message}",
+  "A link opened a snippet in the API Playground. Replace the snippet in the editor? Its changes are not saved.": "\uB9C1\uD06C\uAC00 API \uD50C\uB808\uC774\uADF8\uB77C\uC6B4\uB4DC\uC5D0\uC11C \uC2A4\uB2C8\uD3AB\uC744 \uC5F4\uC5C8\uC2B5\uB2C8\uB2E4. \uD3B8\uC9D1\uAE30\uC758 \uC2A4\uB2C8\uD3AB\uC744 \uBC14\uAFC0\uAE4C\uC694? \uC800\uC7A5\uD558\uC9C0 \uC54A\uC740 \uBCC0\uACBD \uC0AC\uD56D\uC774 \uC788\uC2B5\uB2C8\uB2E4.",
   "A map tool: clear fog with a brush": "\uB9F5 \uB3C4\uAD6C: \uBE0C\uB7EC\uC2DC\uB85C \uC804\uC7A5\uC758 \uC548\uAC1C \uAC77\uAE30",
   "A name for the snippet:": "\uC2A4\uB2C8\uD3AB \uC774\uB984:",
   "A panel built from widgets": "\uC704\uC82F\uC73C\uB85C \uB9CC\uB4E0 \uD328\uB110",
+  "Add a menu item and a hotkey": "\uBA54\uB274 \uD56D\uBAA9\uACFC \uB2E8\uCD95\uD0A4 \uCD94\uAC00",
   "API Playground": "API \uD50C\uB808\uC774\uADF8\uB77C\uC6B4\uB4DC",
   "API reference": "API \uB808\uD37C\uB7F0\uC2A4",
-  "Add a menu item and a hotkey": "\uBA54\uB274 \uD56D\uBAA9\uACFC \uB2E8\uCD95\uD0A4 \uCD94\uAC00",
   "Ask, wait, then edit": "\uBB3B\uACE0, \uAE30\uB2E4\uB9B0 \uB2E4\uC74C \uD3B8\uC9D1",
   "Author": "\uC791\uC131\uC790",
   "Cancel": "\uCDE8\uC18C",
   "Clear": "\uC9C0\uC6B0\uAE30",
+  "Close": "\uB2EB\uAE30",
   "Compiling\u2026": "\uCEF4\uD30C\uC77C \uC911\u2026",
+  "Copy a link that opens this snippet in the playground": "\uC774 \uC2A4\uB2C8\uD3AB\uC744 \uD50C\uB808\uC774\uADF8\uB77C\uC6B4\uB4DC\uC5D0\uC11C \uC5EC\uB294 \uB9C1\uD06C \uBCF5\uC0AC",
+  "Copy Link": "\uB9C1\uD06C \uBCF5\uC0AC",
   "Ctrl+Enter runs the snippet.": "Ctrl+Enter\uB85C \uC2A4\uB2C8\uD3AB\uC744 \uC2E4\uD589\uD569\uB2C8\uB2E4.",
   "Delete": "\uC0AD\uC81C",
   "Delete Snippet": "\uC2A4\uB2C8\uD3AB \uC0AD\uC81C",
@@ -27,6 +31,8 @@ var KO = {
   "Export as Plugin": "\uD50C\uB7EC\uADF8\uC778\uC73C\uB85C \uB0B4\uBCF4\uB0B4\uAE30",
   "Export as Plugin\u2026": "\uD50C\uB7EC\uADF8\uC778\uC73C\uB85C \uB0B4\uBCF4\uB0B4\uAE30\u2026",
   "Id": "ID",
+  "line {line}": "{line}\uBC88\uC9F8 \uC904",
+  "Link copied. It opens this snippet in the playground of whoever follows it; nothing runs until they press Run.": "\uB9C1\uD06C\uB97C \uBCF5\uC0AC\uD588\uC2B5\uB2C8\uB2E4. \uB9C1\uD06C\uB97C \uC5F0 \uC0AC\uB78C\uC758 \uD50C\uB808\uC774\uADF8\uB77C\uC6B4\uB4DC\uC5D0 \uC774 \uC2A4\uB2C8\uD3AB\uC774 \uC5F4\uB9AC\uBA70, \uC2E4\uD589\uC744 \uB204\uB974\uAE30 \uC804\uC5D0\uB294 \uC544\uBB34\uAC83\uB3C4 \uC2E4\uD589\uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.",
   "Listen to what the user does": "\uC0AC\uC6A9\uC790\uC758 \uB3D9\uC791 \uB4E3\uAE30",
   "Loading the code editor\u2026": "\uCF54\uB4DC \uD3B8\uC9D1\uAE30\uB97C \uBD88\uB7EC\uC624\uB294 \uC911\u2026",
   "Name": "\uC774\uB984",
@@ -46,6 +52,7 @@ var KO = {
   "Save": "\uC800\uC7A5",
   "Save As": "\uB2E4\uB978 \uC774\uB984\uC73C\uB85C \uC800\uC7A5",
   "Save As\u2026": "\uB2E4\uB978 \uC774\uB984\uC73C\uB85C \uC800\uC7A5\u2026",
+  "Save it, or use Export as Plugin to share it as files.": "\uC800\uC7A5\uD558\uAC70\uB098, \uD50C\uB7EC\uADF8\uC778\uC73C\uB85C \uB0B4\uBCF4\uB0B4\uAE30\uB85C \uD30C\uC77C\uC744 \uB9CC\uB4E4\uC5B4 \uACF5\uC720\uD558\uC138\uC694.",
   "Save the snippet (Ctrl+S)": "\uC2A4\uB2C8\uD3AB \uC800\uC7A5 (Ctrl+S)",
   "Saved": "\uC800\uC7A5\uB428",
   "Saved {file}.": "{file}\uC744(\uB97C) \uC800\uC7A5\uD588\uC2B5\uB2C8\uB2E4.",
@@ -56,11 +63,16 @@ var KO = {
   "Take back everything the last run registered": "\uB9C8\uC9C0\uB9C9 \uC2E4\uD589\uC774 \uB4F1\uB85D\uD55C \uAC83\uC744 \uBAA8\uB450 \uB418\uB3CC\uB9AC\uAE30",
   "The browser's storage for the editor is full.": "\uBE0C\uB77C\uC6B0\uC800\uC5D0\uC11C \uD3B8\uC9D1\uAE30\uAC00 \uC4F0\uB294 \uC800\uC7A5 \uACF5\uAC04\uC774 \uAC00\uB4DD \uCC3C\uC2B5\uB2C8\uB2E4.",
   "The code editor could not be loaded: {error}": "\uCF54\uB4DC \uD3B8\uC9D1\uAE30\uB97C \uBD88\uB7EC\uC624\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4: {error}",
+  "The link may have been cut short when it was copied.": "\uBCF5\uC0AC\uD558\uB294 \uB3D9\uC548 \uB9C1\uD06C\uAC00 \uC798\uB838\uC744 \uC218 \uC788\uC2B5\uB2C8\uB2E4.",
+  "The link to this snippet:": "\uC774 \uC2A4\uB2C8\uD3AB\uC758 \uB9C1\uD06C:",
+  "The link's snippet could not be read": "\uB9C1\uD06C\uC758 \uC2A4\uB2C8\uD3AB\uC744 \uC77D\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4",
   "The run failed. What it registered before the error stays until Stop.": "\uC2E4\uD589\uC5D0 \uC2E4\uD328\uD588\uC2B5\uB2C8\uB2E4. \uC624\uB958 \uC804\uC5D0 \uB4F1\uB85D\uD55C \uAC83\uC740 \uC911\uC9C0\uD560 \uB54C\uAE4C\uC9C0 \uB0A8\uC544 \uC788\uC2B5\uB2C8\uB2E4.",
   "The snippet becomes the body of the plugin's activate(api) function. You get a zip with plugin.json, plugin.ts, and the package.json and tsconfig.json to type-check and build it. Its README says how to load it into the editor from your computer.": "\uC2A4\uB2C8\uD3AB\uC740 \uD50C\uB7EC\uADF8\uC778\uC758 activate(api) \uD568\uC218 \uBCF8\uBB38\uC774 \uB429\uB2C8\uB2E4. plugin.json, plugin.ts\uC640 \uD0C0\uC785 \uAC80\uC0AC \uBC0F \uBE4C\uB4DC\uC5D0 \uC4F0\uB294 package.json, tsconfig.json\uC774 \uB4E0 zip \uD30C\uC77C\uC744 \uBC1B\uC2B5\uB2C8\uB2E4. \uB0B4 \uCEF4\uD4E8\uD130\uC5D0\uC11C \uD3B8\uC9D1\uAE30\uB85C \uBD88\uB7EC\uC624\uB294 \uBC29\uBC95\uC740 README\uC5D0 \uC788\uC2B5\uB2C8\uB2E4.",
   "The snippet could not be compiled:": "\uC2A4\uB2C8\uD3AB\uC744 \uCEF4\uD30C\uC77C\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4:",
   "The snippet could not be saved": "\uC2A4\uB2C8\uD3AB\uC744 \uC800\uC7A5\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4",
   "The snippet in the editor has changes that are not saved. Replace it?": "\uD3B8\uC9D1\uAE30\uC758 \uC2A4\uB2C8\uD3AB\uC5D0 \uC800\uC7A5\uD558\uC9C0 \uC54A\uC740 \uBCC0\uACBD \uC0AC\uD56D\uC774 \uC788\uC2B5\uB2C8\uB2E4. \uBC14\uAFC0\uAE4C\uC694?",
+  "The snippet is too long for a link": "\uC2A4\uB2C8\uD3AB\uC774 \uB108\uBB34 \uAE38\uC5B4 \uB9C1\uD06C\uB85C \uB9CC\uB4E4 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4",
+  "This snippet came from a link. Read it before you run it: a snippet can do anything the editor can.": "\uC774 \uC2A4\uB2C8\uD3AB\uC740 \uB9C1\uD06C\uB85C \uC5F4\uC5C8\uC2B5\uB2C8\uB2E4. \uC2E4\uD589\uD558\uAE30 \uC804\uC5D0 \uC77D\uC5B4 \uBCF4\uC138\uC694. \uC2A4\uB2C8\uD3AB\uC740 \uD3B8\uC9D1\uAE30\uAC00 \uD560 \uC218 \uC788\uB294 \uC77C\uC744 \uBAA8\uB450 \uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4.",
   "Try Again": "\uB2E4\uC2DC \uC2DC\uB3C4",
   "Types from @scm-js/plugin-api {version}": "@scm-js/plugin-api {version}\uC758 \uD0C0\uC785",
   "Undid the last run's map edits. Undo steps taken back: {count}.": "\uB9C8\uC9C0\uB9C9 \uC2E4\uD589\uC774 \uB9F5\uC5D0 \uD55C \uD3B8\uC9D1\uC744 \uB418\uB3CC\uB838\uC2B5\uB2C8\uB2E4. \uB418\uB3CC\uB9B0 \uC2E4\uD589 \uCDE8\uC18C \uB2E8\uACC4: {count}\uAC1C.",
@@ -71,9 +83,49 @@ var KO = {
   "What the run registered stays until Stop or the next run.": "\uC2E4\uD589\uC774 \uB4F1\uB85D\uD55C \uAC83\uC740 \uC911\uC9C0\uD558\uAC70\uB098 \uB2E4\uC2DC \uC2E4\uD589\uD560 \uB54C\uAE4C\uC9C0 \uB0A8\uC544 \uC788\uC2B5\uB2C8\uB2E4.",
   "What the snippet logs with console.log appears here.": "\uC2A4\uB2C8\uD3AB\uC774 console.log\uB85C \uAE30\uB85D\uD55C \uB0B4\uC6A9\uC774 \uC5EC\uAE30\uC5D0 \uB098\uD0C0\uB0A9\uB2C8\uB2E4.",
   "Write a trigger from text": "\uD14D\uC2A4\uD2B8\uB85C \uD2B8\uB9AC\uAC70 \uC791\uC131",
-  "line {line}": "{line}\uBC88\uC9F8 \uC904",
   "{count} type errors; running anyway. The first: {message}": "\uD0C0\uC785 \uC624\uB958 {count}\uAC1C\uAC00 \uC788\uC9C0\uB9CC \uC2E4\uD589\uD569\uB2C8\uB2E4. \uCCAB \uBC88\uC9F8: {message}"
 };
+
+// link.ts
+var PARAM = "playground";
+var FORMAT = "1";
+var MAX_LINK_CHARS = 8e3;
+function toBase64Url(bytes) {
+  let s = "";
+  for (let i = 0; i < bytes.length; i += 32768) s += String.fromCharCode(...bytes.subarray(i, i + 32768));
+  return btoa(s).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+}
+function fromBase64Url(text) {
+  const b64 = text.replace(/-/g, "+").replace(/_/g, "/");
+  const bin = atob(b64 + "=".repeat((4 - b64.length % 4) % 4));
+  return Uint8Array.from(bin, (c) => c.charCodeAt(0));
+}
+async function through(bytes, stream) {
+  const out = new Response(new Blob([bytes]).stream().pipeThrough(stream));
+  return new Uint8Array(await out.arrayBuffer());
+}
+async function encodeSnippet(code) {
+  return FORMAT + toBase64Url(await through(new TextEncoder().encode(code), new CompressionStream("deflate-raw")));
+}
+async function decodeSnippet(value) {
+  if (!value.startsWith(FORMAT)) return null;
+  try {
+    return new TextDecoder("utf-8", { fatal: true }).decode(await through(fromBase64Url(value.slice(FORMAT.length)), new DecompressionStream("deflate-raw")));
+  } catch {
+    return null;
+  }
+}
+async function snippetLink(code, where = location) {
+  return `${where.origin}${where.pathname}?${PARAM}=${await encodeSnippet(code)}`;
+}
+function takeFromAddress() {
+  const url = new URL(location.href);
+  const value = url.searchParams.get(PARAM);
+  if (value === null) return null;
+  url.searchParams.delete(PARAM);
+  history.replaceState(history.state, "", url.pathname + url.search + url.hash);
+  return value;
+}
 
 // examples.ts
 var EXAMPLES = [
@@ -720,6 +772,8 @@ var Runner = class {
   url = null;
   table = [];
   detach = null;
+  /** What a whole-plugin snippet's `activate` returned, run on Stop. */
+  deactivate = null;
   seq = 0;
   /** The history as the run left it, for `undoRun`. */
   after = null;
@@ -740,6 +794,14 @@ var Runner = class {
   }
   /** Take back everything the last run registered and clear what it scheduled. */
   stop() {
+    const deactivate = this.deactivate;
+    this.deactivate = null;
+    try {
+      if (typeof deactivate === "function") deactivate();
+      else if (deactivate && typeof deactivate.dispose === "function") deactivate.dispose();
+    } catch (err) {
+      this.hooks.log({ level: "error", args: ["The snippet's deactivate failed:", err], line: this.lineOf(err) });
+    }
     for (const t of this.timers) clearTimeout(t);
     for (const t of this.intervals) clearInterval(t);
     for (const f of this.frames) cancelAnimationFrame(f);
@@ -789,10 +851,14 @@ var Runner = class {
     const started = performance.now();
     this.set("running");
     try {
-      await import(
+      const module = await import(
         /* @vite-ignore */
         url
       );
+      if (typeof module.default === "function") {
+        const back = await module.default(handoff.api);
+        if (this.scope === scope) this.deactivate = back;
+      }
       const h = this.api.document.history();
       this.after = { label: h.undo, depth: h.undoDepth, edits: Math.max(0, h.undoDepth - before) };
       if (this.scope === scope) this.set("live");
@@ -1271,11 +1337,17 @@ var Playground = class {
     } });
     const out = el("div", { className: "apg-out", role: "log" });
     const reference = el("a", { href: REFERENCE_URL, target: "_blank", rel: "noopener" }, t("API reference"));
+    const copyLink = el("a", { href: "#", title: t("Copy a link that opens this snippet in the playground") }, t("Copy Link"));
+    copyLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      void this.copyLink();
+    });
     const foot = el(
       "div",
       { className: "apg-foot" },
       el("span", {}, t("Types from @scm-js/plugin-api {version}", { version: TYPES_VERSION })),
       el("span", { className: "apg-gap", style: "flex:1" }),
+      copyLink,
       reference
     );
     const root = el(
@@ -1463,6 +1535,41 @@ var Playground = class {
     }
     this.library.setDraft(this.draft);
   }
+  /**
+   * A snippet that came in a link: into the editor as a new, unsaved snippet, never run.
+   * Changes in the editor that are not saved are only replaced if the user says so.
+   */
+  async openLinked(code) {
+    const { t } = this;
+    if (this.draft.code !== code && this.modified() && this.draft.code.trim()) {
+      const ok = await this.api.ui.confirm(t("A link opened a snippet in the API Playground. Replace the snippet in the editor? Its changes are not saved."), {
+        title: t("API Playground"),
+        confirmLabel: t("Replace"),
+        danger: true
+      });
+      if (!ok) return;
+    }
+    this.draft = { code, source: null };
+    this.flushDraft();
+    this.ui?.model?.setValue(code);
+    this.fillPicker();
+    this.open();
+    this.log({ level: "warn", args: [t("This snippet came from a link. Read it before you run it: a snippet can do anything the editor can.")] });
+  }
+  async copyLink() {
+    const { api, t } = this;
+    const link = await snippetLink(this.draft.code);
+    if (link.length > MAX_LINK_CHARS) {
+      api.ui.toast({ kind: "warn", title: t("The snippet is too long for a link"), detail: t("Save it, or use Export as Plugin to share it as files.") });
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(link);
+      api.ui.status(t("Link copied. It opens this snippet in the playground of whoever follows it; nothing runs until they press Run."));
+    } catch {
+      await api.ui.prompt(t("The link to this snippet:"), { title: t("Copy Link"), value: link, confirmLabel: t("Close") });
+    }
+  }
   /* ── Running ───────────────────────────────────────────── */
   async run() {
     const ui = this.ui;
@@ -1641,12 +1748,38 @@ var Playground = class {
 };
 
 // plugin.ts
+function whenMapShown(api, ms = 2e4) {
+  const shown = () => {
+    const r = api.view.visible();
+    return r.x1 > r.x0 && r.y1 > r.y0;
+  };
+  if (shown()) return Promise.resolve();
+  return new Promise((resolve) => {
+    const done = () => {
+      clearTimeout(timer);
+      sub.dispose();
+      resolve();
+    };
+    const sub = api.events.on("view", () => {
+      if (shown()) done();
+    });
+    const timer = setTimeout(done, ms);
+  });
+}
 function activate(api) {
   api.i18n.register({ ko: KO });
   const t = (text, params) => api.i18n.t(text, params);
   const playground = new Playground(api, t);
   api.commands.register({ id: "open", title: t("API Playground"), run: () => playground.toggle() });
   api.menu.add("Tools", { label: t("API Playground"), icon: "plugin", command: "open" });
+  const linked = takeFromAddress();
+  if (linked !== null) {
+    void decodeSnippet(linked).then(async (code) => {
+      await whenMapShown(api);
+      if (code === null) api.ui.toast({ kind: "warn", title: t("The link's snippet could not be read"), detail: t("The link may have been cut short when it was copied.") });
+      else await playground.openLinked(code);
+    });
+  }
   return () => playground.dispose();
 }
 export {

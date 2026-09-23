@@ -10,6 +10,11 @@
  * - `setTimeout`, `setInterval` and `requestAnimationFrame` are wrapped so `stop()` can
  *   clear what they left scheduled, which the scope cannot see.
  *
+ * A snippet that is a whole plugin — `export default function activate(api) { … }` — has
+ * that function called with the same `api` once the module has loaded, and whatever it
+ * returns (a cleanup function or a `Disposable`) is run on Stop, as the editor would on
+ * turning a plugin off. So a `plugin.ts` can be pasted in and run as it is.
+ *
  * The line is put on the same line as the snippet's first, so line numbers need no shift.
  * Nothing here can stop a loop that never yields: the snippet runs on the page's own
  * thread, as a plugin does.
@@ -101,6 +106,8 @@ export class Runner {
   private url: string | null = null;
   private table: number[] = [];
   private detach: (() => void) | null = null;
+  /** What a whole-plugin snippet's `activate` returned, run on Stop. */
+  private deactivate: unknown = null;
   private seq = 0;
   /** The history as the run left it, for `undoRun`. */
   private after: { label: string | null; depth: number; edits: number } | null = null;
@@ -126,6 +133,14 @@ export class Runner {
 
   /** Take back everything the last run registered and clear what it scheduled. */
   stop() {
+    const deactivate = this.deactivate as { dispose?: () => void } | (() => void) | null;
+    this.deactivate = null;
+    try {
+      if (typeof deactivate === "function") deactivate();
+      else if (deactivate && typeof deactivate.dispose === "function") deactivate.dispose();
+    } catch (err) {
+      this.hooks.log({ level: "error", args: ["The snippet's deactivate failed:", err], line: this.lineOf(err) });
+    }
     for (const t of this.timers) clearTimeout(t);
     for (const t of this.intervals) clearInterval(t);
     for (const f of this.frames) cancelAnimationFrame(f);
@@ -180,7 +195,11 @@ export class Runner {
     const started = performance.now();
     this.set("running");
     try {
-      await import(/* @vite-ignore */ url);
+      const module = (await import(/* @vite-ignore */ url)) as { default?: unknown };
+      if (typeof module.default === "function") {
+        const back = await (module.default as (api: PluginApi) => unknown)(handoff.api);
+        if (this.scope === scope) this.deactivate = back;
+      }
       const h = this.api.document.history();
       this.after = { label: h.undo, depth: h.undoDepth, edits: Math.max(0, h.undoDepth - before) };
       // A newer run may have started while this one awaited.

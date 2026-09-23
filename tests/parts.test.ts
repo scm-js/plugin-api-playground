@@ -1,4 +1,6 @@
+import { deflateRawSync } from "node:zlib";
 import ts from "typescript";
+import { decodeSnippet, encodeSnippet, snippetLink } from "../link";
 import { describe, expect, it } from "vitest";
 import { detail, expandable, preview } from "../inspect";
 import { moduleText, prelude, stackLine } from "../run";
@@ -114,5 +116,27 @@ describe("the zip writer", () => {
       at += 46 + len;
     }
     expect(names).toEqual(["a/plugin.json", "a/한.txt"]);
+  });
+});
+
+describe("snippet links", () => {
+  it("round-trip, and read what the docs site's build writes (Node's zlib)", async () => {
+    const code = 'console.log("한글 ×", api.document.info());\n'.repeat(3);
+    const param = await encodeSnippet(code);
+    expect(param).toMatch(/^1[A-Za-z0-9_-]+$/);
+    expect(await decodeSnippet(param)).toBe(code);
+    const fromDocs = `1${deflateRawSync(Buffer.from(code, "utf8"), { level: 9 }).toString("base64url")}`;
+    expect(await decodeSnippet(fromDocs)).toBe(code);
+  });
+
+  it("refuse anything else", async () => {
+    expect(await decodeSnippet("2abc")).toBeNull();
+    expect(await decodeSnippet("1!!!")).toBeNull();
+    expect(await decodeSnippet("1AAAA")).toBeNull();
+  });
+
+  it("address the page they were made on", async () => {
+    const link = await snippetLink("api.log(1);", { origin: "https://editor.scmjs.dev", pathname: "/" });
+    expect(link).toMatch(/^https:\/\/editor\.scmjs\.dev\/\?playground=1/);
   });
 });

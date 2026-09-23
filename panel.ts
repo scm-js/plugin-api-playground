@@ -10,6 +10,7 @@ import type { PanelHandle, PluginApi } from "@scm-js/plugin-api";
 import { EXAMPLES, FIRST } from "./examples";
 import { detail, expandable, preview } from "./inspect";
 import { Library, type Draft } from "./library";
+import { MAX_LINK_CHARS, snippetLink } from "./link";
 import { compile, DEFAULT_DIST, DIST_STORAGE_KEY, loadMonaco, releaseWorker, SNIPPET_URI, THEME, type MonacoApi } from "./monaco";
 import { Runner, type LogEntry, type RunState } from "./run";
 import { idFromName, starterFiles } from "./starter";
@@ -141,9 +142,12 @@ export class Playground {
     const clear = w.button(t("Clear"), { className: "sm", ghost: true, onClick: () => { this.lines.length = 0; this.renderOutput(); } });
     const out = el("div", { className: "apg-out", role: "log" });
     const reference = el("a", { href: REFERENCE_URL, target: "_blank", rel: "noopener" }, t("API reference"));
+    const copyLink = el("a", { href: "#", title: t("Copy a link that opens this snippet in the playground") }, t("Copy Link"));
+    copyLink.addEventListener("click", (e) => { e.preventDefault(); void this.copyLink(); });
     const foot = el("div", { className: "apg-foot" },
       el("span", {}, t("Types from @scm-js/plugin-api {version}", { version: TYPES_VERSION })),
       el("span", { className: "apg-gap", style: "flex:1" }),
+      copyLink,
       reference);
 
     const root = el("div", { className: "apg" },
@@ -329,6 +333,42 @@ export class Playground {
   private flushDraft() {
     if (this.saveTimer) { clearTimeout(this.saveTimer); this.saveTimer = null; }
     this.library.setDraft(this.draft);
+  }
+
+  /**
+   * A snippet that came in a link: into the editor as a new, unsaved snippet, never run.
+   * Changes in the editor that are not saved are only replaced if the user says so.
+   */
+  async openLinked(code: string) {
+    const { t } = this;
+    if (this.draft.code !== code && this.modified() && this.draft.code.trim()) {
+      const ok = await this.api.ui.confirm(t("A link opened a snippet in the API Playground. Replace the snippet in the editor? Its changes are not saved."), {
+        title: t("API Playground"), confirmLabel: t("Replace"), danger: true,
+      });
+      if (!ok) return;
+    }
+    this.draft = { code, source: null };
+    this.flushDraft();
+    this.ui?.model?.setValue(code);
+    this.fillPicker();
+    this.open();
+    this.log({ level: "warn", args: [t("This snippet came from a link. Read it before you run it: a snippet can do anything the editor can.")] });
+  }
+
+  private async copyLink() {
+    const { api, t } = this;
+    const link = await snippetLink(this.draft.code);
+    if (link.length > MAX_LINK_CHARS) {
+      api.ui.toast({ kind: "warn", title: t("The snippet is too long for a link"), detail: t("Save it, or use Export as Plugin to share it as files.") });
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(link);
+      api.ui.status(t("Link copied. It opens this snippet in the playground of whoever follows it; nothing runs until they press Run."));
+    } catch {
+      // No clipboard permission: the link in a field the user can copy from.
+      await api.ui.prompt(t("The link to this snippet:"), { title: t("Copy Link"), value: link, confirmLabel: t("Close") });
+    }
   }
 
   /* ── Running ───────────────────────────────────────────── */
