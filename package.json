@@ -1,6 +1,6 @@
 {
   "name": "scmjs-plugin-api-playground",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "API Playground — try the scmJS plugin API in the editor; a plugin for the scmJS StarCraft map editor.",
   "author": "Jeany",
@@ -13,7 +13,7 @@
     "test": "vitest run"
   },
   "devDependencies": {
-    "@scm-js/plugin-api": "^1.35.0",
+    "@scm-js/plugin-api": "^1.36.0",
     "esbuild": "^0.28.2",
     "monaco-editor": "^0.56.0",
     "typescript": "~5.9.2",

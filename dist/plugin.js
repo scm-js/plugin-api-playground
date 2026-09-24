@@ -509,7 +509,7 @@ var index_d_default = '/**\n * Type declarations for the scmJS plugin API \u2014
 // node_modules/@scm-js/plugin-api/package.json
 var package_default = {
   name: "@scm-js/plugin-api",
-  version: "1.35.0",
+  version: "1.36.0",
   description: "Type declarations for the scmJS plugin API",
   license: "MIT",
   types: "index.d.ts",

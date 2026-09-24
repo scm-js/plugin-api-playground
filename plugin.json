@@ -1,7 +1,7 @@
 {
   "name": "API Playground",
   "id": "api-playground",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Try the plugin API without writing a plugin. A panel with a code editor where `api` is already in scope, with completion and the reference on hover: write a few lines, run them, and the map changes. Everything a run registers is taken back on Stop. Save snippets, start from worked examples, and export one as a starter plugin.",
   "author": "Jeany",
   "homepage": "https://github.com/scm-js/plugin-api-playground",
