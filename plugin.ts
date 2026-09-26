@@ -23,13 +23,16 @@ function whenMapShown(api: PluginApi, ms = 20000): Promise<void> {
   });
 }
 
+/** A menu label: English, which is how the menu knows the item; the editor shows it through `KO`. */
+const msg = (text: string) => text;
+
 export default function activate(api: PluginApi) {
   api.i18n.register({ ko: KO });
   const t = (text: string, params?: Record<string, string | number>) => api.i18n.t(text, params);
   const playground = new Playground(api, t);
 
-  api.commands.register({ id: "open", title: t("API Playground"), run: () => playground.toggle() });
-  api.menu.add("Tools", { label: t("API Playground"), icon: "plugin", command: "open" });
+  api.commands.register({ id: "open", title: "API Playground", run: () => playground.toggle() });
+  api.menu.add("Tools", { label: msg("API Playground"), icon: "plugin", command: "open" });
 
   // A "Try it" link from the docs, or one a user copied: the snippet goes into the editor, unrun.
   const linked = takeFromAddress();

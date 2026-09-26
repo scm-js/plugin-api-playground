@@ -9,7 +9,7 @@ const root = new URL("../", import.meta.url);
 const keys = new Set(EXAMPLES.map((e) => e.title));
 for (const file of readdirSync(root).filter((f) => f.endsWith(".ts") && f !== "ko.ts")) {
   const source = readFileSync(new URL(file, root), "utf8");
-  for (const m of source.matchAll(/\bt\("((?:[^"\\]|\\.)*)"/g)) keys.add(JSON.parse(`"${m[1]}"`) as string);
+  for (const m of source.matchAll(/\b(?:t|msg)\("((?:[^"\\]|\\.)*)"/g)) keys.add(JSON.parse(`"${m[1]}"`) as string);
 }
 
 describe("the Korean catalogue", () => {

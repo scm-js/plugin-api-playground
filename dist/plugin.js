@@ -1766,12 +1766,13 @@ function whenMapShown(api, ms = 2e4) {
     const timer = setTimeout(done, ms);
   });
 }
+var msg = (text) => text;
 function activate(api) {
   api.i18n.register({ ko: KO });
   const t = (text, params) => api.i18n.t(text, params);
   const playground = new Playground(api, t);
-  api.commands.register({ id: "open", title: t("API Playground"), run: () => playground.toggle() });
-  api.menu.add("Tools", { label: t("API Playground"), icon: "plugin", command: "open" });
+  api.commands.register({ id: "open", title: "API Playground", run: () => playground.toggle() });
+  api.menu.add("Tools", { label: msg("API Playground"), icon: "plugin", command: "open" });
   const linked = takeFromAddress();
   if (linked !== null) {
     void decodeSnippet(linked).then(async (code) => {
